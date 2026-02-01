@@ -7,6 +7,10 @@ from sklearn.linear_model import LogisticRegression
 X_train = joblib.load("artifacts/X_train.pkl")
 y_train = joblib.load("artifacts/y_train.pkl")
 
+# # temp
+# print("DEBUG → X_train shape:", X_train.shape)
+# print("DEBUG → X_train columns:", list(X_train.columns))
+
 
 # Ensure model directory exists
 os.makedirs("artifacts/models", exist_ok=True)

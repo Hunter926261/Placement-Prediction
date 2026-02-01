@@ -9,7 +9,14 @@ from src.config import TARGET_COLUMN, TEST_SIZE, RANDOM_STATE
 
 # Split features & target
 def split_features_target(df: pd.DataFrame):
-    X = df.drop(columns=[TARGET_COLUMN])
+    X = df.drop(
+        columns=[
+            TARGET_COLUMN,
+            "StudentID",
+            "ExtracurricularActivities",
+            "PlacementTraining"
+        ]
+    )
     y = df[TARGET_COLUMN]
     return X, y
 
