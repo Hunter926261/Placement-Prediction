@@ -1,26 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Placement Prediction</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: #f4f6f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 4px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .placed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .not-placed {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
 </head>
+
 <body>
-    <h2>Placement Prediction</h2>
+
+<div class="container">
+    <h2>🎓 Placement Prediction</h2>
 
     <form method="POST">
-        CGPA: <input name="CGPA"><br><br>
-        Internships: <input name="Internships"><br><br>
-        Projects: <input name="Projects"><br><br>
-        Workshops: <input name="Workshops"><br><br>
-        Aptitude Score: <input name="AptitudeTestScore"><br><br>
-        Soft Skills Rating: <input name="SoftSkillsRating"><br><br>
-        SSC Marks: <input name="SSC_Marks"><br><br>
-        HSC Marks: <input name="HSC_Marks"><br><br>
 
-        <button type="submit">Predict</button>
+        <div class="form-group">
+            <label>CGPA</label>
+            <input type="number" step="0.01" name="CGPA" placeholder="e.g. 8.2" required>
+        </div>
+
+        <div class="form-group">
+            <label>Internships</label>
+            <input type="number" name="Internships" placeholder="e.g. 2" required>
+        </div>
+
+        <div class="form-group">
+            <label>Projects</label>
+            <input type="number" name="Projects" placeholder="e.g. 3" required>
+        </div>
+
+        <div class="form-group">
+            <label>Workshops / Certifications</label>
+            <input type="number" name="Workshops" placeholder="e.g. 4" required>
+        </div>
+
+        <div class="form-group">
+            <label>Aptitude Test Score</label>
+            <input type="number" step="0.01" name="AptitudeTestScore" placeholder="e.g. 78" required>
+        </div>
+
+        <div class="form-group">
+            <label>Soft Skills Rating (1–5)</label>
+            <input type="number" step="0.1" name="SoftSkillsRating" placeholder="e.g. 4.2" required>
+        </div>
+
+        <div class="form-group">
+            <label>SSC Marks (%)</label>
+            <input type="number" step="0.01" name="SSC_Marks" placeholder="e.g. 85" required>
+        </div>
+
+        <div class="form-group">
+            <label>HSC Marks (%)</label>
+            <input type="number" step="0.01" name="HSC_Marks" placeholder="e.g. 80" required>
+        </div>
+
+        <button type="submit">Predict Placement</button>
     </form>
 
     {% if prediction %}
-        <h3>Prediction: {{ prediction }}</h3>
+        {% if prediction == "Placed" %}
+            <div class="result placed">✅ Prediction: Placed</div>
+        {% else %}
+            <div class="result not-placed">❌ Prediction: Not Placed</div>
+        {% endif %}
     {% endif %}
+</div>
+
 </body>
 </html>
