@@ -4,87 +4,8 @@
     <meta charset="UTF-8">
     <title>Placement Prediction</title>
 
-    <style>
-        body {
-            font-family: "Segoe UI", Tahoma, sans-serif;
-            background: #f4f6f9;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background: white;
-            width: 420px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        label {
-            font-size: 14px;
-            color: #555;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 4px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: #007bff;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .result {
-            margin-top: 20px;
-            padding: 12px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
-        .placed {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .not-placed {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-    </style>
+    <!-- Link external CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
@@ -138,13 +59,14 @@
     </form>
 
     {% if prediction %}
-        {% if prediction == "Placed" %}
-            <div class="result placed">✅ Prediction: Placed</div>
-        {% else %}
-            <div class="result not-placed">❌ Prediction: Not Placed</div>
-        {% endif %}
+        <div class="result {{ 'placed' if prediction == 'Placed' else 'not-placed' }}">
+            {{ prediction }}
+        </div>
     {% endif %}
 </div>
+
+<!-- Optional JS -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 </body>
 </html>
