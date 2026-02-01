@@ -116,7 +116,8 @@ The final model is deployed using **Flask** with:
 
 ## 🖥️ Screenshots
 
-
+![Not Placed](image-1.png)
+![Placed](image-2.png)
 
 ## 🗂 Project Structure
 
